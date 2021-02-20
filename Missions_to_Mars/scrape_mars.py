@@ -38,13 +38,16 @@ def scrape():
     featured_image_url = jpl_root + rel_path
 
     #### Mars Facts ####
-    # Scrape Mars Fact site tables
+    # Scrape Mars Fact site table
     facts_url = "https://space-facts.com/mars/"
-    facts_tables = pd.read_html(facts_url)
+    facts_df = pd.read_html(facts_url)[0]
+    # Format Table
+    facts_df.set_index(0, inplace=True)
+    facts_df = facts_df.rename(columns={1: "Mars"})
+    facts_df.index.name = None
+    facts_df = facts_df.style.set_table_styles([dict(selector = 'th', props=[('text-align', 'left')])])
     # Convert each to HTML and store the list
-    facts_tables_html = []
-    for table in facts_tables:
-        facts_tables_html.append(table.to_html())
+    facts_html = facts_df.render()
 
     #### USGS Astrogeology ####
     # Scrape USGS Astrogeology
@@ -76,7 +79,7 @@ def scrape():
         "news_title": news_title,
         "news_p": news_p,
         "featured_image_url": featured_image_url,
-        "facts_tables_html": facts_tables_html,
+        "facts_html": facts_html,
         "hemisphere_image_urls": hemisphere_image_urls
     }
     browser.quit()
