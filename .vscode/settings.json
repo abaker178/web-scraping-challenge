@@ -3,6 +3,9 @@
         "pymongo"
     ],
     "cSpell.words": [
+        "hemi",
+        "inplace",
+        "mongodb",
         "usgs"
     ]
 }
