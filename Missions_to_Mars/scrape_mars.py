@@ -31,10 +31,11 @@ def scrape():
     #### JPL ####
     # Scrape JPL
     jpl_url = "https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html"
+    jpl_root = "https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/"
     jpl_soup = scrapeHTML(jpl_url)
     # Capture the featured image on the JPL site
     rel_path = jpl_soup.find("img", class_="headerimage")["src"]
-    featured_image_url = jpl_url + "/" + rel_path
+    featured_image_url = jpl_root + rel_path
 
     #### Mars Facts ####
     # Scrape Mars Fact site tables
