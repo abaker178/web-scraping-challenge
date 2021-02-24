@@ -9,4 +9,4 @@ Build practice and confidence in web scraping with BeautifulSoup, Splinter, and 
 **Mission to Mars** - Build a web application that scrapes various websites for data related to the Mission to Mars and displays the information in a single HTML page.
 
 ## Timeline
-This project will be completed by Feb. 27th, 2021
+This project will likely not have many updates going forward
